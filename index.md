@@ -4,8 +4,6 @@ notoc: true
 notags: true
 ---
 
-{% assign page.title = "" %}
-
 # Skilled
 
 <div class="component-container">
