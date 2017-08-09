@@ -54,12 +54,22 @@ notags: true
     </div>
 </div>
 
+# Stack Share
+
+[![StackShare](https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/cainelli/my-stack)
+
+The following is my [Stack Share](https://stackshare.io/) with the technologies I've been working lateley or had worked in the past.
+
+<a frameborder="0" data-theme="light" data-stack-embed="true" data-layers="1,2,3,4" href="https://embed.stackshare.io/stacks/embed/a11c6c37d39c94fed840035cec4097"/><script async src="https://cdn1.stackshare.io/javascripts/client-code.js" charset="utf-8"></script>
+
 # Community
 
 <div class="row">
 <div markdown="1" class="col-xs-12 col-sm-12 col-md-12 col-lg-6 block">
 
 ### Koli
+
+[![Docker Repository on Quay](https://quay.io/repository/koli/koli-controller/status "Docker Repository on Quay")](https://quay.io/repository/koli/koli-controller)
 
 Koli is a Platform as a Service (PaaS) for Kubernetes which helps developers easily 
 deploy and scale their applications.
@@ -71,7 +81,9 @@ deploy and scale their applications.
 
 ### Kong Ingress Controller
 
-It is a [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress/) for [Kong](https://getkong.org/about/)
+[![Docker Repository on Quay](https://quay.io/repository/koli/kong-ingress/status "Docker Repository on Quay")](https://quay.io/repository/koli/kong-ingress)
+
+It is an [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress/) for [Kong](https://getkong.org/about/)
 which manages Kong APIs for each existent host on ingresses resources.
 
 [Learn more about Kong Ingress](https://github.com/koli/kong-ingress){: class="button outline-btn"}
