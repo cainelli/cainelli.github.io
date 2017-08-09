@@ -4,7 +4,7 @@ notoc: true
 notags: true
 ---
 
-{% assign page.title = site.name %}
+{% assign page.title = "" %}
 
 # Skilled
 
