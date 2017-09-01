@@ -5,6 +5,8 @@ notags: true
 ---
 
 # Skilled
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
 
 <div class="component-container">
     <!--start row-->
@@ -71,6 +73,8 @@ The following is my [Stack Share](https://stackshare.io/) with the technologies 
 
 [![Docker Repository on Quay](https://quay.io/repository/koli/koli-controller/status "Docker Repository on Quay")](https://quay.io/repository/koli/koli-controller)
 
+<a class="github-button" href="https://github.com/koli/koli" data-size="small" data-show-count="true" aria-label="Star koli/koli on GitHub">Star</a>
+
 Koli is a Platform as a Service (PaaS) for Kubernetes which helps developers easily 
 deploy and scale their applications.
 
@@ -83,6 +87,8 @@ deploy and scale their applications.
 
 [![Docker Repository on Quay](https://quay.io/repository/koli/kong-ingress/status "Docker Repository on Quay")](https://quay.io/repository/koli/kong-ingress)
 
+<a class="github-button" href="https://github.com/koli/kong-ingress" data-size="small" data-show-count="true" aria-label="Star koli/kong-ingress on GitHub">Star</a>
+
 It is an [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress/) for [Kong](https://getkong.org/about/)
 which manages Kong APIs for each existent host on ingresses resources.
 
@@ -90,3 +96,15 @@ which manages Kong APIs for each existent host on ingresses resources.
 
 </div>
 </div><!-- end row -->
+
+<div class="row">
+<div markdown="1" class="col-xs-12 col-sm-12 col-md-12 col-lg-6 block">
+### StdLib Stargazers 🌟 Slack
+
+<a class="github-button" href="https://github.com/cainelli/stargazers-slack" data-size="small" data-show-count="true" aria-label="Star cainelli/stargazers-slack on GitHub">Star</a>
+
+A [StdLib](https://stdlib.com) serverless function which recieves GitHub stars and fork events and sends it to a [Slack](https://slack.com) channel.
+
+[Learn more about StdLib Stargazers Slack](https://github.com/cainelli/stargazers-slack){: class="button outline-btn"}
+</div>
+</div>
