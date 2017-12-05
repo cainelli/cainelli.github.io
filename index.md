@@ -110,7 +110,7 @@ deploy and scale their applications.
 
 ### Kong Ingress Controller
 
-[![Docker Repository on Quay](https://quay.io/repository/koli/kong-ingress/status "Docker Repository on Quay")](https://quay.io/repository/koli/kong-ingress)
+[![Build Status](https://travis-ci.org/koli/kong-ingress.svg?branch=master)](https://travis-ci.org/koli/kong-ingress)
 
 <a class="github-button" href="https://github.com/koli/kong-ingress" data-size="small" data-show-count="true" aria-label="Star koli/kong-ingress on GitHub">Star</a>
 
