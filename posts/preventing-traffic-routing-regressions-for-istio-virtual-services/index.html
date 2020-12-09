@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="Fernando Cainelli">
+    <meta name="description" content="Preventing traffic routing regressions for Istio Virtual Services This article was originaly posted in GetYourGuide&rsquo;s Inside Blog.
+Understanding our traffic management One of the Reliability team&rsquo;s responsibilities is to manage how traffic reaches our services, either from the internet, commonly known as north/south, or service to service, east/west.
+We run all our services on Kubernetes, and we have been using Istio since the beginning of 2019 for both network use cases.">
+    <meta name="keywords" content="personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Preventing traffic routing regressions for Istio Virtual Services"/>
+<meta name="twitter:description" content="Preventing traffic routing regressions for Istio Virtual Services This article was originaly posted in GetYourGuide&rsquo;s Inside Blog.
+Understanding our traffic management One of the Reliability team&rsquo;s responsibilities is to manage how traffic reaches our services, either from the internet, commonly known as north/south, or service to service, east/west.
+We run all our services on Kubernetes, and we have been using Istio since the beginning of 2019 for both network use cases."/>
+
+    <meta property="og:title" content="Preventing traffic routing regressions for Istio Virtual Services" />
+<meta property="og:description" content="Preventing traffic routing regressions for Istio Virtual Services This article was originaly posted in GetYourGuide&rsquo;s Inside Blog.
+Understanding our traffic management One of the Reliability team&rsquo;s responsibilities is to manage how traffic reaches our services, either from the internet, commonly known as north/south, or service to service, east/west.
+We run all our services on Kubernetes, and we have been using Istio since the beginning of 2019 for both network use cases." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cainelli.me/posts/preventing-traffic-routing-regressions-for-istio-virtual-services/" />
+<meta property="article:published_time" content="2020-10-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-10-30T00:00:00+00:00" />
+
+
+    <title>
+  Preventing traffic routing regressions for Istio Virtual Services · Fernando Cainelli
+</title>
+
+    
+      <link rel="canonical" href="https://cainelli.me/posts/preventing-traffic-routing-regressions-for-istio-virtual-services/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fork-awesome/1.1.7/css/fork-awesome.min.css" integrity="sha512-9QjPqX/aCNwEQDyMqqMluNOSsHxTwOJNO3d4m5aUeNbyOPm8RcBA5hCUhvGmKFtSmQYGajqPopGtD60FWiWUwg==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" />
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.f01c647a0d25b40da992a37c3376291185eed8a50ced8c26cc2c0bcfe38c97df.css" integrity="sha256-8Bxkeg0ltA2pkqN8M3YpEYXu2KUM7YwmzCwLz&#43;OMl98=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/12.0.4/2/twemoji.min.js" integrity="sha512-panBjUGuKarjg0qxHggQULmRf9jB/YVCy238hmzBWUuLeOuwMSuJgJcUv3T+rwXUBZ9zeUvc49ZcCRH+EO0H8g==" crossorigin="anonymous"></script>
+    
+
+    <meta name="generator" content="Hugo 0.79.0" />
+  </head>
+
+  
+  
+  <body class="colorscheme-light"
+        onload=" twemoji.parse(document.body); "
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Fernando Cainelli
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/resume/">Resume</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Preventing traffic routing regressions for Istio Virtual Services</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2020-10-30T00:00:00Z'>
+                October 30, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              7-minute read
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/fernando-cainelli/">Fernando Cainelli</a></div>
+          
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="preventing-traffic-routing-regressions-for-istio-virtual-services">Preventing traffic routing regressions for Istio Virtual Services</h1>
+<p>This article was originaly posted in <a href="https://inside.getyourguide.com/blog/2020/10/30/preventing-traffic-routing-regressions-for-istio-virtual-services">GetYourGuide&rsquo;s Inside Blog</a>.</p>
+<h2 id="understanding-our-traffic-management">Understanding our traffic management</h2>
+<p>One of the Reliability team&rsquo;s responsibilities is to manage how traffic reaches our services, either from the internet, commonly known as north/south, or service to service, east/west.</p>
+<p>We run all our services on Kubernetes, and we have been using Istio since the beginning of 2019 for both network use cases. This brings the benefit of having the same networking configuration for ingress and service to service traffic. All the external routing configurations live in a single repository with more than 60 VirtualServices.</p>
+<p>A typical VirtualService configuration looks like:</p>
+<script type="application/javascript" src="https://gist.github.com/cainelli/984ab33f95a85a1a23a1ac57b5971012.js?file=virtualservice.yml"></script>
+
+<p>The above VirtualService is bound to an Istio Ingress Gateway and the &ldquo;mesh&rdquo;, a special keyword that assigns this configuration to all sidecar proxies in the cluster. The nice thing about it is that routing works seamlessly, independent of where the requests originate.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">curl -XPOST https://awesome-api.getyourguide.com/customerResetPassword/ ...
+</code></pre></div><pre><code>                                Request from Internet
+</code></pre>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="font-weight:bold">func</span> main() {
+
+	client := &amp;http.Client{}
+
+	req, err := http.NewRequest(<span style="font-style:italic">&#34;POST&#34;</span>, <span style="font-style:italic">&#34;http://awesome-api.awesome-api/customerResetPassword&#34;</span>, <span style="font-weight:bold">nil</span>)
+	<span style="font-weight:bold">if</span> err != <span style="font-weight:bold">nil</span> {
+		<span style="font-style:italic">// handle err
+</span><span style="font-style:italic"></span>	}
+
+	req.Header.Add(<span style="font-style:italic">&#34;Host&#34;</span>, <span style="font-style:italic">&#34;awesome-api.getyourguide.com&#34;</span>)
+	resp, err := client.Do(req)
+	<span style="font-weight:bold">if</span> err != <span style="font-weight:bold">nil</span> {
+		<span style="font-style:italic">// handle err
+</span><span style="font-style:italic"></span>	}
+}
+</code></pre></div><pre><code>                    Request from an internal service running in Kubernetes
+</code></pre>
+<p>You might have read about our <a href="https://inside.getyourguide.com/blog/2020/2/24/how-to-split-a-monolith-into-services">journey towards a distributed, service oriented architecture</a>. It&rsquo;s a long and gradual process: We&rsquo;re extracting business logic from the monolith piece by piece. Let&rsquo;s take a look at a hypothetical example of functionality being extracted and roughly the process behind it:</p>
+<ul>
+<li>
+<p>The Travelers Platform team, responsible for core services in the monolith, wants to extract the user authentication functionality out of it as it’s too complex to maintain in the old stack.</p>
+</li>
+<li>
+<p>After a round of design sessions and feedback, the decision is to go with a trustful external identity provider to store users’ credentials.</p>
+</li>
+<li>
+<p>Existing helper functionalities in the monolith would be moved to a separate service such as custom reset passwords workflow or personal information clean up.</p>
+</li>
+</ul>
+<p>Once the team has implemented the reset password endpoints following the existing API contract, it then sets up a route in the <a href="https://istio.io/latest/docs/concepts/traffic-management/#virtual-services">VirtualService</a>:</p>
+<script type="application/javascript" src="https://gist.github.com/cainelli/4caeaf9f6594358c664e637946bd8288.js?file=virtualservice.yml"></script>
+
+<p>From that moment, all reset password requests are being handled by the new service instead of the monolith transparently for internal and external clients.</p>
+<h2 id="some-of-the-challenges-with-istio">Some of the challenges with Istio</h2>
+<p>Having Istio in our toolbox helps teams split the monolith up, gain visibility, and improve the resilience of our services. However, in reality, it also brings complexity and other issues that need to be addressed. For the scope of this blog post we will limit the discussion to the following topics we have experienced:</p>
+<ul>
+<li>
+<p>VirtualServices can be big and often contain advanced regular expressions. People are afraid to extend or optimize them.</p>
+</li>
+<li>
+<p>Engineers setting up the rules are not familiar with Istio configuration and regressions can easily be introduced.</p>
+</li>
+<li>
+<p>Time spent in pull request reviews is not linear with the number of changes in it. VirtualServices needs to be reviewed as a whole as rules might conflict with each other.</p>
+</li>
+<li>
+<p>Troubleshooting is hard. We need a deep understanding of Istio architecture and APIs, Envoy, HTTP Protocol, TCP, Kubernetes Networking, etc. When something goes wrong,  the MTTR (mean time to recovery) can take hours.</p>
+</li>
+</ul>
+<p>As our engineering teams move fast, the changes to VirtualServices are quite frequent, increasing the chances of bad configuration being deployed.</p>
+<p>Let’s get back to our hypothetical scenario. Now, a different team is extracting the customers data to its dedicated service called <code>users</code>. When the service is ready to be deployed, the engineer working on this finds the <code>auth</code> service route and copy/paste it, changing the path and destination for it with the new <code>users</code> endpoints.</p>
+<script type="application/javascript" src="https://gist.github.com/cainelli/7a2b92a5f63049a2eded5333c8c16a06.js?file=virtualservice.yml"></script>
+
+<p>The VirtualService looks legit until we read the whole file in detail. We can see that the route to <code>users</code> service is based on a <code>prefix</code> to <code>/customer</code>, and as the routes are evaluated top down, it also matches requests to <code>/customerResetPassword</code>. When this configuration is applied, password reset requests would go to the <code>users</code> service that doesn’t have this endpoint, returning a 404 error to the client. Such a mistake is easier to spot in a 30 liner file but is much harder in a 1000 lines one with complex rules in it.</p>
+<h2 id="introducing-a-validation-tool">Introducing a validation tool</h2>
+<p>One way of minimizing the risks is to introduce safety nets; the earlier we spot the issues, the more confident we are rolling out changes. It&rsquo;s not new in software engineering to make use of unit tests to prevent regressions. Unfortunately, there&rsquo;s no such tool for Istio VirtualService configuration, so we decided to come up with a validator that:</p>
+<ol>
+<li>
+<p>could assert if your VirtualService change is doing what you want while you rest assured that existing routing behavior will not break.</p>
+</li>
+<li>
+<p>run it locally and as part of CI (continuous integration) without the need for a Kubernetes + Istio setup.</p>
+</li>
+<li>
+<p>have a simple test case API. They should be short to write but have extensive coverage.</p>
+</li>
+</ol>
+<p>The idea was pitched in a Hack Day* project. Two other engineers, Alexander Mack and Andreas Jaggi, who are passionate about testing, joined the project. After a couple of days of working, we came up with an <a href="https://github.com/getyourguide/istio-config-validator">istio-config-validator</a>. This tool reads all your local VirtualService configuration files and asserts against the test cases you create. Here is an example of how it works continuing with the VirtualService we have created:</p>
+<p>We will start by writing our test cases for the routes we know of. That is typically what a developer will do before submitting a pull request:</p>
+<script type="application/javascript" src="https://gist.github.com/cainelli/2c7c81d18125450575b2932439c963ab.js?file=awesome-api-test.yml"></script>
+
+<p>Three test cases describing our intended behavior for routing were added. The full API specification for test cases is in the repository documentation, but let’s break down and understand what we’re defining here.</p>
+<p><strong>description</strong>: A short description of the test case. It is useful when a test case fails, and we want to identify which one.</p>
+<p><strong>request</strong>: It will be used as input for the VirtualService rule matching. A combination of all possible parameters such as authority, path, and headers will be used to mock requests.</p>
+<p><strong>route</strong>: What’s the exact destination expected? This is what will be used to assert against the result.</p>
+<p><strong>wantMatch</strong>: If you expect the assert to be true or false.</p>
+<p>Let’s run istio-config-validator passing our test cases file and the directory where the VirtualServices are located.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ istio-config-validator -t tests/ manifests/virtualservices/
+
+running test: customers endpoints pointing to users service
+PASS input:[{awesome-api.getyourguide.com GET /customers/1 map[]}]
+PASS input:[{awesome-api.getyourguide.com GET /customers map[]}]
+PASS input:[{awesome-api.getyourguide.com OPTIONS /customers/1 map[]}]
+PASS input:[{awesome-api.getyourguide.com OPTIONS /customers map[]}]
+PASS input:[{awesome-api.getyourguide.com PUT /customers/1 map[]}]
+PASS input:[{awesome-api.getyourguide.com PUT /customers map[]}]
+===========================
+running test: authentication service endpoints
+FAIL input:[{awesome-api.getyourguide.com GET /customerResetPassword map[]}]
+2020-10-15T13:24:35.675470Z     fatal   destination mismatch=[destination:&lt;host:&#34;users.users.svc.cluster.local&#34; &gt; ], want [destination:&lt;host:&#34;auth.auth.svc.cluster.local&#34; &gt; ]
+exit status 1
+</code></pre></div><p>The validator failed on the authentication service endpoint test as a GET request to <code>https://awesome-api.getyourguide/customerResetPassword</code> went to the users service instead of the auth service. That’s enough information to fix the configuration.</p>
+<script type="application/javascript" src="https://gist.github.com/cainelli/adab6831f62bef98fd52975b4fa04a09.js?file=virtualservice.yml"></script>
+
+<p>There are different ways for solving it: here I chose to use regex matching over prefix. Running the command again, we see that all tests have now passed.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ istio-config-validator -t tests/ manifests/virtualservices/
+
+Test summary:
+ - 3 testfiles, 3 configfiles
+ - 3 testcases with 24 inputs passed
+The validator mocks Istio&#39;s rule precedence logic for finding the right destination to assert. This is a naive approach, and we already received good feedback on how to improve it.
+</code></pre></div><p>In general, we are quite happy with the outcome. Since we introduced it, developers have created more than 1,000 test inputs. They can run it locally, get immediate feedback, and deploy with confidence, putting us in a much better position than six months ago.</p>
+<p>We have decided to open-source the project as we think others might be struggling with the same type of problems we were, and they can benefit from it. If you want to start using the validator or contribute, please <a href="https://github.com/getyourguide/istio-config-validator">file an issue or PR in Github</a>.</p>
+<p>I want to thank Alexander Mack and Andreas Jaggi for their valuable contributions and for joining the project. It was pleasant to work with them while delivering something impactful for the Engineering teams.</p>
+<p>*HackDays are 2-day hackathons where engineers are allowed to work on a project of their choice, with colleagues in varying domains across the organization. It provides an opportunity to try something new, build something impactful, and/or meet new people.</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fernandocainelli" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Brazilian, living in Zurich.</p>
+      
+      
+      
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+        
+        <script src="/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"></script>
+      
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>
