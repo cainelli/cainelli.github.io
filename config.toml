@@ -12,7 +12,7 @@ pygmentsstyle = "bw"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
-disqusShortname = "fernandocainelli"
+disqusShortname = "cainelli-me"
 
 [params]
   author = "Fernando Cainelli"
@@ -28,7 +28,7 @@ disqusShortname = "fernandocainelli"
   hideFooter = false
   hideCredits = true
   hideCopyright = true
-  since = 2010
+  since = 2008
 
   enableTwemoji = true
 
