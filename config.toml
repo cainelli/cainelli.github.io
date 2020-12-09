@@ -1,0 +1,78 @@
+# https://github.com/luizdepra/hugo-coder/wiki/Configurations#complete-example
+
+baseurl = "https://cainelli.me"
+title = "Fernando Cainelli"
+theme = "hugo-coder"
+languagecode = "en"
+defaultcontentlanguage = "en"
+
+paginate = 20
+
+pygmentsstyle = "bw"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
+disqusShortname = "fernandocainelli"
+
+[params]
+  author = "Fernando Cainelli"
+  info = "Site Reliability Engineer"
+  description = "Fernando's personal website"
+  keywords = "personal"
+  gravatar = "fernando.cainelli@gmail.com"
+
+  favicon_32 = "/img/favicon-32x32.png"
+  favicon_16 = "/img/favicon-16x16.png"
+
+  footercontent = "Brazilian, living in Zurich."
+  hideFooter = false
+  hideCredits = true
+  hideCopyright = true
+  since = 2010
+
+  enableTwemoji = true
+
+  colorsheme = "dark"
+  hidecolorschemetoggle = false
+
+  #customCSS = ["css/custom.css"]
+  #customSCSS = ["scss/custom.scss"]
+  #customJS = ["js/custom.js"]
+
+[taxonomies]
+  category = "categories"
+  series = "series"
+  tag = "tags"
+  author = "authors"
+
+# Social links
+[[params.social]]
+  name = "Github"
+  icon = "fa fa-github fa-2x"
+  weight = 1
+  url = "https://github.com/cainelli/"
+[[params.social]]
+  name = "Gitlab"
+  icon = "fa fa-linkedin fa-2x"
+  weight = 2
+  url = "https://www.linkedin.com/in/cainelli/"
+[[params.social]]
+  name = "Twitter"
+  icon = "fa fa-twitter fa-2x"
+  weight = 3
+  url = "https://twitter.com/fcainelli/"
+
+# Menu links
+[[menu.main]]
+  name = "Blog"
+  weight = 1
+  url  = "posts/"
+[[menu.main]]
+  name = "About"
+  weight = 2
+  url = "about/"
+
+[[menu.main]]
+  name = "Resume"
+  weight = 2
+  url = "resume/"
