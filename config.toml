@@ -24,7 +24,7 @@ disqusShortname = "cainelli-me"
   favicon_32 = "/img/favicon-32x32.png"
   favicon_16 = "/img/favicon-16x16.png"
 
-  footercontent = "Brazilian, living in Zurich."
+  footercontent = "🏠 Zurich 📍 São Paulo."
   dateFormat = "January 2, 2006"
   hideFooter = false
   hideCredits = true
@@ -33,7 +33,7 @@ disqusShortname = "cainelli-me"
 
   enableTwemoji = true
 
-  colorScheme = "light"
+  colorScheme = "auto"
   hidecolorschemetoggle = false
 
   rtl = false
@@ -66,15 +66,22 @@ disqusShortname = "cainelli-me"
 
 # Menu links
 [[menu.main]]
-  name = "Blog"
-  weight = 1
-  url  = "posts/"
-[[menu.main]]
   name = "About"
   weight = 2
   url = "about/"
 
 [[menu.main]]
+  name = "Blog"
+  weight = 1
+  url  = "posts/"
+
+
+[[menu.main]]
   name = "Resume"
   weight = 2
   url = "resume/"
+
+[[menu.main]]
+  name = "Contact"
+  weight = 3
+  url = "contact/"
