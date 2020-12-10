@@ -17,7 +17,7 @@ disqusShortname = "cainelli-me"
 [params]
   author = "Fernando Cainelli"
   info = "Site Reliability Engineer"
-  description = "Fernando's personal website"
+  description = "Another Site Reliability Engineer's website"
   keywords = "personal"
   gravatar = "fernando.cainelli@gmail.com"
 
