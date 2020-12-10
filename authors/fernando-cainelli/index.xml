@@ -13,9 +13,7 @@
       <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://cainelli.me/posts/preventing-traffic-routing-regressions-for-istio-virtual-services/</guid>
-      <description>Preventing traffic routing regressions for Istio Virtual Services This article was originaly posted in GetYourGuide&amp;rsquo;s Inside Blog.
-Understanding our traffic management One of the Reliability team&amp;rsquo;s responsibilities is to manage how traffic reaches our services, either from the internet, commonly known as north/south, or service to service, east/west.
-We run all our services on Kubernetes, and we have been using Istio since the beginning of 2019 for both network use cases.</description>
+      <description></description>
     </item>
     
   </channel>

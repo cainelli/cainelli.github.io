@@ -13,9 +13,7 @@
       <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://cainelli.me/posts/preventing-traffic-routing-regressions-for-istio-virtual-services/</guid>
-      <description>Preventing traffic routing regressions for Istio Virtual Services This article was originaly posted in GetYourGuide&amp;rsquo;s Inside Blog.
-Understanding our traffic management One of the Reliability team&amp;rsquo;s responsibilities is to manage how traffic reaches our services, either from the internet, commonly known as north/south, or service to service, east/west.
-We run all our services on Kubernetes, and we have been using Istio since the beginning of 2019 for both network use cases.</description>
+      <description></description>
     </item>
     
     <item>
@@ -25,6 +23,15 @@ We run all our services on Kubernetes, and we have been using Istio since the be
       
       <guid>https://cainelli.me/about/</guid>
       <description>About I&amp;rsquo;m glad you&amp;rsquo;re curious, my name is Fernando as you should already know, I was born and raised in São Paulo, Brazil and I live in Switzerland. I&amp;rsquo;m a Site Reliability Engineer at GetYourGuide and I am passionate about cloud native technologies. I enjoy coding (mostly in Go lately), to solve interesting problems and to learn. In my free time, I like to travel, listen to tech podcasts, to cook (Italian food is my specialty), to hike, ski, dive, and to play viola caipira, a traditional Portuguese/Brazilian ten strings guitar.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cainelli.me/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cainelli.me/contact/</guid>
+      <description>Contact ✉️ Email: fernando@cainelli.me</description>
     </item>
     
     <item>
