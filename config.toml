@@ -33,7 +33,7 @@ disqusShortname = "cainelli-me"
 
   enableTwemoji = true
 
-  colorScheme = "auto"
+  colorScheme = "light"
   hidecolorschemetoggle = false
 
   rtl = false
