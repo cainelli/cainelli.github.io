@@ -48,6 +48,12 @@ We run all our services on Kubernetes, and we have been using Istio since the be
     
 
     
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.126ad3988d46bdae6217a11105b53c9662bca05f39d42d3c0fb366919d334620.css" integrity="sha256-EmrTmI1Gva5iF6ERBbU8lmK8oF851C08D7NmkZ0zRiA=" crossorigin="anonymous" media="screen" />
+      
+    
 
     
 
@@ -68,7 +74,9 @@ We run all our services on Kubernetes, and we have been using Istio since the be
 
   
   
-  <body class="colorscheme-light"
+    
+  
+  <body class="colorscheme-auto"
         onload=" twemoji.parse(document.body); "
   >
     
@@ -153,23 +161,23 @@ We run all our services on Kubernetes, and we have been using Istio since the be
 <script type="application/javascript" src="https://gist.github.com/cainelli/984ab33f95a85a1a23a1ac57b5971012.js?file=virtualservice.yml"></script>
 
 <p>The above VirtualService is bound to an Istio Ingress Gateway and the &ldquo;mesh&rdquo;, a special keyword that assigns this configuration to all sidecar proxies in the cluster. The nice thing about it is that routing works seamlessly, independent of where the requests originate.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">curl -XPOST https://awesome-api.getyourguide.com/customerResetPassword/ ...
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">curl -XPOST https://awesome-api.getyourguide.com/customerResetPassword/ ...
 </code></pre></div><pre><code>                                Request from Internet
 </code></pre>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="font-weight:bold">func</span> main() {
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#fff;font-weight:bold">func</span> main() {
 
 	client := &amp;http.Client{}
 
-	req, err := http.NewRequest(<span style="font-style:italic">&#34;POST&#34;</span>, <span style="font-style:italic">&#34;http://awesome-api.awesome-api/customerResetPassword&#34;</span>, <span style="font-weight:bold">nil</span>)
-	<span style="font-weight:bold">if</span> err != <span style="font-weight:bold">nil</span> {
-		<span style="font-style:italic">// handle err
-</span><span style="font-style:italic"></span>	}
+	req, err := http.NewRequest(<span style="color:#0ff;font-weight:bold">&#34;POST&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;http://awesome-api.awesome-api/customerResetPassword&#34;</span>, <span style="color:#fff;font-weight:bold">nil</span>)
+	<span style="color:#fff;font-weight:bold">if</span> err != <span style="color:#fff;font-weight:bold">nil</span> {
+		<span style="color:#007f7f">// handle err
+</span><span style="color:#007f7f"></span>	}
 
-	req.Header.Add(<span style="font-style:italic">&#34;Host&#34;</span>, <span style="font-style:italic">&#34;awesome-api.getyourguide.com&#34;</span>)
+	req.Header.Add(<span style="color:#0ff;font-weight:bold">&#34;Host&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;awesome-api.getyourguide.com&#34;</span>)
 	resp, err := client.Do(req)
-	<span style="font-weight:bold">if</span> err != <span style="font-weight:bold">nil</span> {
-		<span style="font-style:italic">// handle err
-</span><span style="font-style:italic"></span>	}
+	<span style="color:#fff;font-weight:bold">if</span> err != <span style="color:#fff;font-weight:bold">nil</span> {
+		<span style="color:#007f7f">// handle err
+</span><span style="color:#007f7f"></span>	}
 }
 </code></pre></div><pre><code>                    Request from an internal service running in Kubernetes
 </code></pre>
@@ -233,7 +241,7 @@ We run all our services on Kubernetes, and we have been using Istio since the be
 <p><strong>route</strong>: What’s the exact destination expected? This is what will be used to assert against the result.</p>
 <p><strong>wantMatch</strong>: If you expect the assert to be true or false.</p>
 <p>Let’s run istio-config-validator passing our test cases file and the directory where the VirtualServices are located.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ istio-config-validator -t tests/ manifests/virtualservices/
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ istio-config-validator -t tests/ manifests/virtualservices/
 
 running test: customers endpoints pointing to users service
 PASS input:[{awesome-api.getyourguide.com GET /customers/1 map[]}]
@@ -251,7 +259,7 @@ exit status 1
 <script type="application/javascript" src="https://gist.github.com/cainelli/adab6831f62bef98fd52975b4fa04a09.js?file=virtualservice.yml"></script>
 
 <p>There are different ways for solving it: here I chose to use regex matching over prefix. Running the command again, we see that all tests have now passed.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ istio-config-validator -t tests/ manifests/virtualservices/
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ istio-config-validator -t tests/ manifests/virtualservices/
 
 Test summary:
  - 3 testfiles, 3 configfiles
@@ -282,7 +290,7 @@ The validator mocks Istio&#39;s rule precedence logic for finding the right dest
             return;
         }
         var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "fernandocainelli" + '.disqus.com/embed.js';
+        s.src = '//' + "cainelli-me" + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
