@@ -67,21 +67,21 @@ disqusShortname = "cainelli-me"
 # Menu links
 [[menu.main]]
   name = "About"
-  weight = 2
+  weight = 1
   url = "about/"
 
 [[menu.main]]
   name = "Blog"
-  weight = 1
+  weight = 2
   url  = "posts/"
 
 
 [[menu.main]]
   name = "Resume"
-  weight = 2
+  weight = 3
   url = "resume/"
 
 [[menu.main]]
   name = "Contact"
-  weight = 3
+  weight = 4
   url = "contact/"
