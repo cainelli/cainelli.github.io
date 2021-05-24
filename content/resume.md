@@ -1,43 +1,63 @@
-## Summary
-
--   Mission-critical sharped Devops Eng. and Team Lead. Problem solver, multidisciplinary and get things done.
--   Background in Networking and Unix Based Systems Administrator
--   Fast paced learner
--   AWS and Azure Expert, experienced Google Cloud and Aliyun
--   Design and architecture cloud-based solutions to maintain platform resilience, scalability and stability
--   Plenty experience developing and managing container applications with Docker and Kubernetes
--   Design cloud backup and DR solutions, system monitoring and security
--   Overall automation with Puppet/Chef
--   Design and develop RESTFUL APIs.
--   Golang and Python developer.
--   Design and manage network services: ha proxy, nginx, iptables, load balancers, route tables, nat, etc
--   Development consuming RESTFUL and SOAP APIs
--   Experience with Unit and Functional Testing integrated with build process
--   Development for metric collection, monitoring and automation
--   Design and manage VMware Cluster with large storage areas
--   Self-managed, meet deadlines, priorities changing, motivation and ability to prioritize
--   Deep experience designing cost effective storage solutions considering the right storage technology for each component of the application
--   Driven technology to meet business growth
--   Experience with version control system: Git, Bitbucket
--   Comfortable with presentations for customers, directors, executives and partners
--   Cache technologies such as Redis and Memcached, Relational and Non-Relation database implementations with or w/o ORMs. Design, manage and manipulate complex queries on MySQL, Mariadb, Aurora, Postgrees and Mongodb
--   Industry standards and best practices follower
-
 ## Experience
 
 ### GetYourGuide AG
 
-#### Site Reliability Engineer - 2018/12 - Current
+Relevant technologies:
 
-_TODO_
+**Languages:** Go, Python, Lua, Ruby<sup>1</sup>.
+**Containers:** Kubernetes, Containerd, ECR, Docker<sup>1</sup>.
+**Databases:** Aurora (MySQL), Kafka, Elastic Search, Simple Queue Service (SQS), S3, Percona XtraDB Cluster<sup>1</sup>, RabbitMQ<sup>1</sup>
+**Network:** Istio, Envoy, XDS, CloudFront (CDN), Route53, Calico, CoreDNS, Nginx<sup>1</sup>, HAProxy<sup>1</sup>.
+**Security:** Open Policy Agent (OPA), GitHub Security Alerts, Dependabot.
+**CI/CD:** Drone, Spinnaker, Github Actions, Helm, Kustomize.
+**Observability:** DataDog (APM, Statsd, Network), Logging (FluentBit, Kafka, Elastic Search, Kibana).
+**Infrastructure as Code:** CloudFormation, Terraform
+**Configuration as Code:** Chef<sup>1</sup>.
+**Workflow Management:** Apache Airflow.
+
+<sup>1</sup> Phased out technologies which played a big role at some point.
+
+#### Senior Site Reliability Engineer - 2018/12 - Current
+
+The DevOps team was formed by 6 people when I started at GetYourGuide, with contributions in hiring and onboarding team members, I helped to grow the team to 16 people and we split into specialized teams: Developer Enablement, Data Infrastructure, Security, and Reliability. As we were a single team taking care of the whole infrastructure at the beginning, I had contributions on different areas such as development tooling, CI/CD, computing, networking, databases, etc.
+
+When I joined, the team had promoted the self-hosted Kubernetes cluster (based on Terraform and a set of Lambda functions) to production-ready and had the first microservice running in a dry-run mode. Since then, we have: containerized the monolith, moving it to Kubernetes, and supporting the new era of microservices at GetYourGuide. Today, all services run as containerized applications on top of Kubernetes.
+
+In the infrastructure group, we have product areas in which I'm the co-owner of Compute and Network. Identifying customer (developers) problems and defining a roadmap to help improve their experience are in my pool of responsibilities within the team.
+
+Some of the projects I was involved in:
+
+-   Containerizing the monolith and adapting it for running in Kubernetes. This was a collaboration between various teams across engineering and required changes in different areas: application code, development tooling, CI/CD, and the infrastructure which was highly customized over the years to get the best in performance and high availability. My team was leading the project and some of my contributions were: identify blockers for parts of the system, implementing critical component changes as Memcached replication during the rollout and networking while running the two infrastructure platforms, hold other teams accountable during the project, coordinate the traffic shift during the migration while monitoring and identifying possible issues, etc.
+-   Subject matter expert for Kubernetes, Istio, and Networking topics. Provide support and input in the different channels in the engineering organization as guilds, design reviews, regular support questions from development teams, and Post Mortems.
+-   Modernized our custom Ingress and Firewall layer from Chef + Nginx + Lua to Kubernetes + Istio + Go sidecar. This enabled developers to define and own the routing to their services as a self-service. I led the project by holding design sessions, implementing code on critical parts of the systems while reviewing and defining tasks for other team members.
+-   Go guild co-lead. Facilitate meetings and help teams using Go to do it most effectively by sharing common practices.
+-   Led a small project to implement an Istio VirtualService testing framework to empower developers to roll out routing changes with confidence and reduce the risk of introducing regressions.
+-   Created a custom autoscaler kubernetes operator for Airflow to gracefully scale up and down the number of workers running based on the number of tasks in the queue.
+-   Defined an SRE checklist with requirements and guidelines for services before going to production according to its SLAs.
+-   Infrastructure automation through kubernetes controllers and Lambda Functions.
+-   Modernize our Kubernetes setup to use EKS, a big project to streamline how we run clusters by fully automating cluster management through controllers and pipelines that roll out changes in a uniform way across dozens of clusters.
+-   Collaborated with a cross-functional team to introduce canary deployments to help to reduce the number of incidents caused by code changes.
+-   Implemented an Envoy external authorization service that integrates with our internal OIDC broker to provide authentication and authorization capabilities for services in a generic way.
+-   Knowledge sharing sessions within the team and the engineering group with topics as high available services in Kubernetes, leveraging istio capabilities, in-depth kubernetes, among others.
 
 ### Inova Tecnologias
 
 #### Engineering Manager - 2013/04 – 2017/12
 
-Fortunately, I had the opportunity to work alongside with great team members and we did awesome stuff together. Responsible for Devops and Engineering Team I’ve accumulated functions since I had never let the terminal go.
+Relevant Technologies:
 
-Look for new business and partnership opportunities, getting better contracts, maintain ~400k hosting users and dozens of dedicated services, understand company and customer problems to create appropriate roadmaps, prioritize tickets based on meetings with the support team, manage government projects and do some code it’s just a few of my duties. Below some of things we’ve accomplished
+**Languages:** Python, Perl, TypeScript.
+**Cloud Providers:** Amazon AWS, Azure.
+**Databases:** MySQL, MariaDB, S3, Memcached, Redis.
+**Obeservability:** Nagios, Zabbix, Cacti.
+**Infrastructure as Code:** Terraform
+**Configuration as Code:** Puppet
+**Containers:** Docker
+
+
+Fortunately, I had the opportunity to work alongside with great team members and we did awesome stuff together. Responsible for Devops and Engineering Team I’ve accumulated functions since I had never let the technical side.
+
+Look for new business and partnership opportunities, getting better contracts, maintain ~400k hosting users and dozens of dedicated clusters, understand company and customer problems to create appropriate roadmaps, prioritize tickets based on pain points of the support team, manage government projects and do some code it’s just a few of my duties. Below some of things we’ve accomplished
 
 -   Coordinate datacenter migration moving 200TB and 150 production vms within 128 public IPs, 3k domains(only 80% managed by us) with less than 4 hours and 1 minor issue felt by the users.
 -   We’ve worked alongside Zimbra to help them fix several performance bugs impacting customers
@@ -77,7 +97,7 @@ As IT Specialist I’ve led and executed the biggest success cases of the compan
 
 #### System Administrator – Fiscaltech 2008/10 – 2010/10
 
-Deployed and maintained Linux services running in over ten offices spread out to the state of São Paulo. File server, proxies, email, webservers, vpn connections and ITSM was some of them.
+Deployed and maintained Linux services running in over ten offices. File server, proxies, email, webservers, vpn connections and ITSM was some of the services I implemented.
 
 ## Education
 
