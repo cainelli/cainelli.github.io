@@ -5,17 +5,26 @@
 Relevant technologies:
 
 **Languages:** Go, Python, Lua, Ruby<sup>1</sup>.
+
 **Containers:** Kubernetes, Containerd, ECR, Docker<sup>1</sup>.
-**Databases:** Aurora (MySQL), Kafka, Elastic Search, Simple Queue Service (SQS), S3, Percona XtraDB Cluster<sup>1</sup>, RabbitMQ<sup>1</sup>
+
+**Databases:** Aurora (MySQL), Kafka, Elastic Search, Simple Queue Service (SQS), S3, Percona XtraDB Cluster<sup>1</sup>, RabbitMQ<sup>1</sup>.
+
 **Network:** Istio, Envoy, XDS, CloudFront (CDN), Route53, Calico, CoreDNS, Nginx<sup>1</sup>, HAProxy<sup>1</sup>.
+
 **Security:** Open Policy Agent (OPA), GitHub Security Alerts, Dependabot.
+
 **CI/CD:** Drone, Spinnaker, Github Actions, Helm, Kustomize.
+
 **Observability:** DataDog (APM, Statsd, Network), Logging (FluentBit, Kafka, Elastic Search, Kibana).
+
 **Infrastructure as Code:** CloudFormation, Terraform
+
 **Configuration as Code:** Chef<sup>1</sup>.
+
 **Workflow Management:** Apache Airflow.
 
-<sup>1</sup> Phased out technologies which played a big role at some point.
+> <sup>1</sup> Phased out technologies which played a big role at some point.
 
 #### Senior Site Reliability Engineer - 2018/12 - Current
 
@@ -47,13 +56,18 @@ Some of the projects I was involved in:
 Relevant Technologies:
 
 **Languages:** Python, Perl, TypeScript.
-**Cloud Providers:** Amazon AWS, Azure.
-**Databases:** MySQL, MariaDB, S3, Memcached, Redis.
-**Obeservability:** Nagios, Zabbix, Cacti.
-**Infrastructure as Code:** Terraform
-**Configuration as Code:** Puppet
-**Containers:** Docker
 
+**Cloud Providers:** Amazon AWS, Azure.
+
+**Databases:** MySQL, MariaDB, S3, Memcached, Redis.
+
+**Obeservability:** Nagios, Zabbix, Cacti.
+
+**Infrastructure as Code:** Terraform
+
+**Configuration as Code:** Puppet
+
+**Containers:** Docker
 
 Fortunately, I had the opportunity to work alongside with great team members and we did awesome stuff together. Responsible for Devops and Engineering Team I’ve accumulated functions since I had never let the technical side.
 
