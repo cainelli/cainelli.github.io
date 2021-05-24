@@ -4,9 +4,9 @@
 
 Relevant technologies:
 
-**Languages:** Go, Python, Lua, Ruby<sup>1</sup>; **Containers:** Kubernetes, Containerd, ECR, Docker<sup>1</sup>; **Databases:** Aurora (MySQL), Kafka, Elastic Search, Simple Queue Service (SQS), S3, Percona XtraDB Cluster<sup>1</sup>, RabbitMQ<sup>1</sup>; **Network:** Istio, Envoy, XDS, CloudFront (CDN), Route53, Calico, CoreDNS, Nginx<sup>1</sup>, HAProxy<sup>1</sup>; **Security:** Open Policy Agent (OPA), GitHub Security Alerts, Dependabot; **CI/CD:** Drone, Spinnaker, Github Actions, Helm, Kustomize; **Observability:** DataDog (APM, Statsd, Network), Logging (FluentBit, Kafka, Elastic Search, Kibana); **Infrastructure as Code:** CloudFormation, Terraform; **Configuration as Code:** Chef<sup>1</sup>; **Workflow Management:** Apache Airflow.
+**Languages:** Go, Python, Lua, Ruby[^1]; **Containers:** Kubernetes, Containerd, ECR, Docker[^1]; **Databases:** Aurora (MySQL), Kafka, Elastic Search, Simple Queue Service (SQS), S3, Percona XtraDB Cluster[^1], RabbitMQ[^1]; **Network:** Istio, Envoy, XDS, CloudFront (CDN), Route53, Calico, CoreDNS, Nginx[^1], HAProxy[^1]; **Security:** Open Policy Agent (OPA), GitHub Security Alerts, Dependabot; **CI/CD:** Drone, Spinnaker, Github Actions, Helm, Kustomize; **Observability:** DataDog (APM, Statsd, Network), Logging (FluentBit, Kafka, Elastic Search, Kibana); **Infrastructure as Code:** CloudFormation, Terraform; **Configuration as Code:** Chef[^1]; **Workflow Management:** Apache Airflow.
 
-> <sup>1</sup> Phased out technologies which played a big role at some point.
+> [^1] Phased out technologies which played a big role at some point.
 
 #### Senior Site Reliability Engineer - 2018/12 - Current
 
