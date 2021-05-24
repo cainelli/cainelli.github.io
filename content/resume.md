@@ -51,8 +51,6 @@ Some of the projects I was involved in:
 
 ### Inova Tecnologias
 
-#### Engineering Manager - 2013/04 – 2017/12
-
 Relevant Technologies:
 
 **Languages:** Python, Perl, TypeScript.
@@ -68,6 +66,8 @@ Relevant Technologies:
 **Configuration as Code:** Puppet
 
 **Containers:** Docker
+
+#### Engineering Manager - 2013/04 – 2017/12
 
 Fortunately, I had the opportunity to work alongside with great team members and we did awesome stuff together. Responsible for Devops and Engineering Team I’ve accumulated functions since I had never let the technical side.
 
