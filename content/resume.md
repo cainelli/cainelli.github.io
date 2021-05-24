@@ -4,7 +4,7 @@
 
 Relevant technologies:
 
-**Languages:** Go, Python, Lua, Ruby¹ ; **Containers:** Kubernetes, Containerd, ECR, Docker¹ ; **Databases:** Aurora (MySQL), Kafka, Elastic Search, Simple Queue Service (SQS), S3, Percona XtraDB Cluster¹ , RabbitMQ¹ ; **Network:** Istio, Envoy, XDS, CloudFront (CDN), Route53, Calico, CoreDNS, Nginx¹ , HAProxy¹ ; **Security:** Open Policy Agent (OPA), GitHub Security Alerts, Dependabot; **CI/CD:** Drone, Spinnaker, Github Actions, Helm, Kustomize; **Observability:** DataDog (APM, Statsd, Network), Logging (FluentBit, Kafka, Elastic Search, Kibana); **Infrastructure as Code:** CloudFormation, Terraform; **Configuration as Code:** Chef¹ ; **Workflow Management:** Apache Airflow.
+**Languages:** Go, Python, Lua, Ruby¹ ; **Containers:** Kubernetes, Containerd, ECR, Docker¹ ; **Databases:** Aurora (MySQL), Kafka, Elastic Search, Simple Queue Service (SQS), S3, Percona XtraDB Cluster¹ , RabbitMQ¹ ; **Network:** Istio, Envoy, XDS, CloudFront (CDN), Route53, Calico, CoreDNS, Nginx¹ , HAProxy¹ ; **Security:** Open Policy Agent (OPA), GitHub Security Alerts, Dependabot; **CI/CD:** Drone, Spinnaker, Github Actions, Helm, Kustomize; **Cloud Providers:** Amazon AWS; **Observability:** DataDog (APM, Statsd, Network), Logging (FluentBit, Kafka, Elastic Search, Kibana); **Infrastructure as Code:** CloudFormation, Terraform; **Configuration as Code:** Chef¹ ; **Workflow Management:** Apache Airflow.
 
 ¹ Phased out technologies which played a big role at some point.
 
