@@ -40,7 +40,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://cainelli.me/resume/</guid>
-      <description>Summary  Mission-critical sharped Devops Eng. and Team Lead. Problem solver, multidisciplinary and get things done. Background in Networking and Unix Based Systems Administrator Fast paced learner AWS and Azure Expert, experienced Google Cloud and Aliyun Design and architecture cloud-based solutions to maintain platform resilience, scalability and stability Plenty experience developing and managing container applications with Docker and Kubernetes Design cloud backup and DR solutions, system monitoring and security Overall automation with Puppet/Chef Design and develop RESTFUL APIs.</description>
+      <description>Experience GetYourGuide AG Relevant technologies:
+Languages: Go, Python, Lua, Ruby1. Containers: Kubernetes, Containerd, ECR, Docker1. Databases: Aurora (MySQL), Kafka, Elastic Search, Simple Queue Service (SQS), S3, Percona XtraDB Cluster1, RabbitMQ1Network: Istio, Envoy, XDS, CloudFront (CDN), Route53, Calico, CoreDNS, Nginx1, HAProxy1. Security: Open Policy Agent (OPA), GitHub Security Alerts, Dependabot. CI/CD: Drone, Spinnaker, Github Actions, Helm, Kustomize. Observability: DataDog (APM, Statsd, Network), Logging (FluentBit, Kafka, Elastic Search, Kibana). Infrastructure as Code: CloudFormation, Terraform Configuration as Code: Chef1.</description>
     </item>
     
   </channel>
