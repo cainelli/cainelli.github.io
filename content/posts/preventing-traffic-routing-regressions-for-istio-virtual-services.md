@@ -6,5 +6,5 @@ tags = []
 categories = []
 series = []
 authors = ["Fernando Cainelli"]
-externalLink = "https://inside.getyourguide.com/blog/2020/10/30/preventing-traffic-routing-regressions-for-istio-virtual-services"
+externalLink = "https://medium.com/tech-getyourguide/preventing-traffic-routing-regressions-for-istio-virtual-services-97430b7e4310"
 +++
