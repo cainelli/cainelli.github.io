@@ -1,6 +1,3 @@
-+++
-title = "Contact"
-slug = "contact"
-+++
+# Contact
 
-Follow me, @johndoe.
+**✉️ Email:**   <fernando@cainelli.me>
