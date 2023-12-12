@@ -1,3 +1,3 @@
 # Contact
 
-**✉️ Email:**   fernando@cainelli.me
+**✉️ Email:**   <fernando@cainelli.me>
