@@ -36,7 +36,7 @@ Site Reliability Engineer with over 15 years of experience in infrastructure, so
 
 ## GetYourGuide AG
 
-### Staff Site Reliability Engineer — 2022 – Present
+### Staff Site Reliability Engineer — Feb 2022 – Present
 
 Owner of the Compute and Network product areas within the infrastructure group. Setting technical vision and driving cross-org initiatives for Kubernetes, service mesh, and networking at scale. Responsible for identifying developer pain points, defining roadmaps, mentoring engineers, and ensuring platform reliability.
 
@@ -54,22 +54,29 @@ Key contributions:
 - **Cost optimizations:** Cross-AZ traffic savings ~$30k/year, Confluent data volume reduction of 60–70%, CDN batching savings ~25%.
 - **Hiring & interview process:** Championed and revamped the SRE interview process with a hands-on take-home task using the production stack, receiving consistently positive candidate feedback.
 
-### Senior Site Reliability Engineer — Dec 2018 – 2022
+### Senior Site Reliability Engineer — Jul 2019 – Jan 2022
 
-Joined as part of a 6-person DevOps team. Contributed to hiring and onboarding to grow the team to 16 engineers, which later split into specialized teams: Developer Enablement, Data Infrastructure, Security, and Reliability. As the team evolved, I contributed across development tooling, CI/CD, compute, networking, and databases.
+Contributed to hiring and onboarding to grow the team from 6 to 16 engineers, which later split into specialized teams: Developer Enablement, Data Infrastructure, Security, and Reliability. As the team evolved, I contributed across development tooling, CI/CD, compute, networking, and databases.
 
 Key contributions:
 
 - **EKS migration:** Led the modernization of the Kubernetes setup to EKS across ~300 services with zero downtime. Built a migration controller and automated cluster management through pipelines, rolling out changes uniformly across 20+ clusters.
 - **Ingress modernization:** Led the redesign of the Ingress and Firewall layer from Chef + Nginx + Lua to Kubernetes + Istio + Go sidecar, enabling developers to self-service their routing configurations. Held design sessions, implemented critical components, and coordinated the team.
 - **Envoy auth service:** Implemented an Envoy external authorization service integrated with an internal OIDC broker, providing transparent token refresh, auditing, and generic authentication and authorization capabilities across services.
-- **Monolith containerization:** Led critical parts of the cross-team effort to containerize the monolith and migrate it to Kubernetes. Identified blockers, implemented Memcached cluster replication and network communication for the rollout, coordinated the traffic shift, and monitored the migration process.
 - **Canary deployments:** Collaborated with a cross-functional team to introduce canary deployments, reducing the number of incidents caused by code changes.
 - **VirtualService testing framework:** Led the implementation of an Istio VirtualService testing framework, enabling developers to validate routing changes before rollout and reducing regression risk.
-- **Airflow autoscaler:** Built a custom Kubernetes operator to gracefully autoscale Airflow workers based on task queue depth.
 - **Infrastructure automation:** Built Kubernetes controllers and Lambda functions to automate infrastructure operations.
 - **Go guild co-lead:** Facilitated meetings and promoted best practices for Go across engineering teams.
 - **Knowledge sharing:** Delivered sessions on high-availability in Kubernetes, Istio capabilities, and Kubernetes internals to the broader engineering organization.
+
+### Site Reliability Engineer — Jan 2018 – Jun 2019
+
+Joined as part of a 6-person DevOps team. Focused on containerization, infrastructure modernization, and building foundational platform capabilities.
+
+Key contributions:
+
+- **Monolith containerization:** Led critical parts of the cross-team effort to containerize the monolith and migrate it to Kubernetes. Identified blockers, implemented Memcached cluster replication and network communication for the rollout, coordinated the traffic shift, and monitored the migration process.
+- **Airflow autoscaler:** Built a custom Kubernetes operator to gracefully autoscale Airflow workers based on task queue depth.
 
 ## Inova Tecnologias
 
