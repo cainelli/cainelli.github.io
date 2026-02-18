@@ -1,3 +1,21 @@
+---
+type: resume
+title: Fernando Cainelli
+---
+
+<div class="resume-contact">
+  <div class="resume-contact-row">
+    <span><i class="fa fa-globe"></i> <a href="https://cainelli.me">cainelli.me</a></span>
+    <span><i class="fa fa-github"></i> <a href="https://github.com/cainelli">github.com/cainelli</a></span>
+    <span><i class="fa fa-whatsapp"></i> <a href="https://wa.me/5511950460448">+55 11 95046 0448</a></span>
+  </div>
+  <div class="resume-contact-row">
+    <span><i class="fa fa-map-marker"></i> São Paulo - Brazil</span>
+    <span><i class="fa fa-linkedin"></i> <a href="https://www.linkedin.com/in/cainelli/">linkedin.com/in/cainelli</a></span>
+    <span><i class="fa fa-envelope"></i> <a href="mailto:fernando@cainelli.me">fernando@cainelli.me</a></span>
+  </div>
+</div>
+
 # Summary
 
 Site Reliability Engineer with over 15 years of experience in infrastructure, software development, distributed systems, and platform engineering. Specialized in Kubernetes, service mesh, and networking at scale. Proven track record of leading infrastructure modernization projects, growing teams, and improving system reliability in high-traffic environments.
