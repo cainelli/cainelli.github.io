@@ -1,85 +1,103 @@
+# Summary
+
+Site Reliability Engineer with over 15 years of experience in infrastructure, software development, distributed systems, and platform engineering. Specialized in Kubernetes, service mesh, and networking at scale. Proven track record of leading infrastructure modernization projects, growing teams, and improving system reliability in high-traffic environments.
+
+# Skills
+
+**Languages:** Go, Python, TypeScript, Lua
+**Containers & Orchestration:** Kubernetes, EKS, Containerd, ECR, Helm, Kustomize, Argo Rollouts
+**Networking:** Istio, Envoy, gRPC, Cloudflare, CloudFront (CDN), Route53, Calico, eBPF, CoreDNS
+**Databases & Messaging:** Aurora (MySQL), Kafka, Elasticsearch, SQS, S3, Memcached, Redis
+**Security:** OIDC, Open Policy Agent (OPA), Dependabot, GitHub Security Alerts
+**CI/CD:** GitHub Actions, Argo CD, Drone, Spinnaker
+**Observability:** Datadog (APM, StatsD, Network), FluentBit, Kibana
+**Infrastructure as Code:** Terraform, CloudFormation, CDK
+**Cloud Providers:** Amazon AWS, Azure
+
 # Experience
 
 ## GetYourGuide AG
 
-Relevant technologies:
+### Staff Site Reliability Engineer — 2022 – Present
 
-**Languages:** Go, Python, Lua, Ruby¹ ; **Containers:** Kubernetes, Containerd, ECR, Docker¹ ; **Databases:** Aurora (MySQL), Kafka, Elastic Search, Simple Queue Service (SQS), S3, Percona XtraDB Cluster¹ , RabbitMQ¹ ; **Network:** Istio, Envoy, XDS, CloudFront (CDN), Route53, Calico, CoreDNS, Nginx¹ , HAProxy¹ ; **Security:** Open Policy Agent (OPA), GitHub Security Alerts, Dependabot; **CI/CD:** Drone, Spinnaker, Github Actions, Helm, Kustomize; **Cloud Providers:** Amazon AWS; **Observability:** DataDog (APM, Statsd, Network), Logging (FluentBit, Kafka, Elastic Search, Kibana); **Infrastructure as Code:** CloudFormation, Terraform; **Configuration as Code:** Chef¹ ; **Workflow Management:** Apache Airflow.
+Owner of the Compute and Network product areas within the infrastructure group. Setting technical vision and driving cross-org initiatives for Kubernetes, service mesh, and networking at scale. Responsible for identifying developer pain points, defining roadmaps, mentoring engineers, and ensuring platform reliability.
 
-¹ Phased out technologies which played a big role at some point.
+Key contributions:
 
-### Senior Site Reliability Engineer - 2018/12 - Current
+- **Service definition redesign (gygservice.yml v2):** Led the redesign of the service definition format. Built tooling including linting, auto-fix, auto-updates (dependabot-like), and JSON schema for documentation and IDE IntelliSense. Rolled out across the org without developer intervention or incidents.
+- **KIAM replacement:** Existing solutions (IRSA, Pod Identity) did not meet internal requirements. Built an in-house IMDS-based solution with a CSI driver, EnvoyFilter, and mutating webhooks.
+- **Envoy open-source contributions:** 7 merged PRs to envoyproxy/envoy: added tracing propagation for ext_proc gRPC streams ([#33665](https://github.com/envoyproxy/envoy/pull/33665), [#34395](https://github.com/envoyproxy/envoy/pull/34395)), fixed 504 timeout responses ([#34856](https://github.com/envoyproxy/envoy/pull/34856)), fixed 100% trace sampling bug ([#37794](https://github.com/envoyproxy/envoy/pull/37794)), plus test and docs fixes.
+- **HPA resilience:** Implemented secondary scaling metric fallback preventing SEV-1 outages during Datadog incidents.
+- **Multicluster strategy & failover:** Designed multi-account EKS architecture with multicluster networking, failover controllers, and automated workload toggling.
+- **Cloudflare migration:** Migrated 45+ domains from CloudFront, saving $12k/month. Built replay testing tooling and a multi-stage weighted rollout with zero customer-facing incidents.
+- **Rate limiting service:** Built a custom Envoy RLS in Go with <1ms latency. Survived Redis outages gracefully; 45+ developer policy changes in the first months.
+- **External Processing migration:** Replaced Lua-based ingress integration with Envoy External Processor Filter, moving from HTTP callouts to gRPC. Completed migration in two weeks using a feature flag via custom resources for seamless transition.
+- **Cluster test framework:** Built custom cluster integration tests that run on every cluster management layer change (EKS upgrades, addon updates) to prevent regressions in new versions.
+- **Cost optimizations:** Cross-AZ traffic savings ~$30k/year, Confluent data volume reduction of 60–70%, CDN batching savings ~25%.
+- **Hiring & interview process:** Championed and revamped the SRE interview process with a hands-on take-home task using the production stack, receiving consistently positive candidate feedback.
 
-The DevOps team was formed by 6 people when I started at GetYourGuide, with contributions in hiring and onboarding team members, I helped to grow the team to 16 people and we split into specialized teams: Developer Enablement, Data Infrastructure, Security, and Reliability. As we were a single team taking care of the whole infrastructure at the beginning, I had contributions on different areas such as development tooling, CI/CD, computing, networking, databases, etc.
+### Senior Site Reliability Engineer — Dec 2018 – 2022
 
-When I joined, the team had promoted the self-hosted Kubernetes cluster to production-ready and had the first microservice running in a dry-run mode. Together we containerized the monolith, had all services running on Kubernetes, improved the existing and added new capabilities to the platform empowering developers with self-services, and support them to improve the overall availability and resilience of our systems in the new distributed architecture while enabling them to be more efficient delivering features to the customers.
+Joined as part of a 6-person DevOps team. Contributed to hiring and onboarding to grow the team to 16 engineers, which later split into specialized teams: Developer Enablement, Data Infrastructure, Security, and Reliability. As the team evolved, I contributed across development tooling, CI/CD, compute, networking, and databases.
 
-In the infrastructure group, we have product areas in which I'm the co-owner of Compute and Network. Identifying customer (developers) problems and defining a roadmap to help improve their experience are in my pool of responsibilities within the team.
+Key contributions:
 
-Some of the projects I was involved in:
+- **EKS migration:** Led the modernization of the Kubernetes setup to EKS across ~300 services with zero downtime. Built a migration controller and automated cluster management through pipelines, rolling out changes uniformly across 20+ clusters.
+- **Ingress modernization:** Led the redesign of the Ingress and Firewall layer from Chef + Nginx + Lua to Kubernetes + Istio + Go sidecar, enabling developers to self-service their routing configurations. Held design sessions, implemented critical components, and coordinated the team.
+- **Envoy auth service:** Implemented an Envoy external authorization service integrated with an internal OIDC broker, providing transparent token refresh, auditing, and generic authentication and authorization capabilities across services.
+- **Monolith containerization:** Led critical parts of the cross-team effort to containerize the monolith and migrate it to Kubernetes. Identified blockers, implemented Memcached cluster replication and network communication for the rollout, coordinated the traffic shift, and monitored the migration process.
+- **Canary deployments:** Collaborated with a cross-functional team to introduce canary deployments, reducing the number of incidents caused by code changes.
+- **VirtualService testing framework:** Led the implementation of an Istio VirtualService testing framework, enabling developers to validate routing changes before rollout and reducing regression risk.
+- **Airflow autoscaler:** Built a custom Kubernetes operator to gracefully autoscale Airflow workers based on task queue depth.
+- **Infrastructure automation:** Built Kubernetes controllers and Lambda functions to automate infrastructure operations.
+- **Go guild co-lead:** Facilitated meetings and promoted best practices for Go across engineering teams.
+- **Knowledge sharing:** Delivered sessions on high-availability in Kubernetes, Istio capabilities, and Kubernetes internals to the broader engineering organization.
 
-- Containerizing the monolith and adapting it for running on Kubernetes. This was a collaboration between various teams across engineering and required changes in different areas: application code, development tooling, CI/CD, and infrastructure. My team was leading the project and some of my contributions were: identify blockers and propose solutions for parts of the project I owned, implementing critical changes as Memcached cluster replication and network communication during the rollout, coordinate the traffic shift, and monitoring the overall service move process.
-- Subject matter expert for Kubernetes, Istio, and Networking topics. Provide support and input in the different channels in the engineering organization as guilds, design reviews, regular support questions from development teams, and Post Mortems.
-- Modernized our custom Ingress and Firewall layer from Chef + Nginx + Lua to Kubernetes + Istio + Go sidecar. This enabled developers to define and own the routing to their services as a self-service. I led the project by holding design sessions, implementing code on critical parts of the systems while reviewing and defining tasks for other team members.
-- Go guild co-lead. Facilitate meetings and help teams using Go to do it most effectively by sharing common practices.
-- Led a small project to implement an Istio VirtualService testing framework to empower developers to roll out routing changes with confidence and reduce the risk of introducing regressions.
-- Created a custom autoscaler kubernetes operator for Airflow to gracefully scale up and down the number of workers running based on the number of tasks in the queue.
-- Defined an SRE checklist with requirements and guidelines for services before going to production according to its SLAs.
-- Infrastructure automation through kubernetes controllers and Lambda Functions.
-- Modernize our Kubernetes setup to use EKS, a big project to streamline how we run clusters by fully automating cluster management through controllers and pipelines that roll out changes in a uniform way across dozens of clusters.
-- Collaborated with a cross-functional team to introduce canary deployments to help to reduce the number of incidents caused by code changes.
-- Implemented an Envoy external authorization service that integrates with our internal OIDC broker to provide authentication and authorization capabilities for services in a generic way.
-- Knowledge sharing sessions within the team and the engineering group with topics as high available services in Kubernetes, leveraging istio capabilities, in-depth kubernetes, among others.
+## Inova Tecnologias
 
-### Inova Tecnologias
+### Engineering Manager — Apr 2013 – Dec 2017
 
-Relevant Technologies:
+Managed the DevOps and Engineering team while remaining hands-on technically. Responsibilities included identifying new business and partnership opportunities, negotiating contracts, managing 400k+ hosting users across dozens of dedicated clusters, creating roadmaps based on company and customer needs, prioritizing work based on support team pain points, managing government projects, and writing code.
 
-**Languages:** Python, Perl, TypeScript; **Cloud Providers:** Amazon AWS, Azure; **Databases:** MySQL; MariaDB, S3, Memcached, Redis; **Observability:** Nagios, Zabbix, Cacti; **Infrastructure as Code:** Terraform; **Configuration as Code:** Puppet; **Containers:** Docker
+**Technologies:** Python, Perl, TypeScript, Amazon AWS, Azure, MySQL, MariaDB, Memcached, Redis, Nagios, Zabbix, Terraform, Puppet, Docker
 
-#### Engineering Manager - 2013/04 – 2017/12
+- Coordinated a datacenter migration of 200TB, 150 production VMs, 128 public IPs, and 3k domains in under 4 hours.
+- Improved customer satisfaction from 70% to 90–98% across technical operations.
+- Increased service availability from 95% in 2013 to 99.98–100% during 2014 and 2015.
+- Migrated 100k users from dedicated environments to AWS, avoiding upfront datacenter infrastructure investments.
+- Established AWS Technology Partnership and joined the Fast Track program, securing marketing, POC, and training budget.
+- Established AWS Consulting Partnership, creating a new product pillar offering AWS managed services.
+- Earned the AWS Innovation Partner Award 2015 for helping customers migrate to AWS.
+- Designed and developed a new customer/reseller portal from scratch, replacing the legacy portal and integrating all company services.
+- Automated configuration management and security updates with Puppet.
+- Built a log archival pipeline with Logstash, Elasticsearch, Kibana, and S3 for compliance requirements.
+- Defined operational and business KPIs using Datadog.
+- Delivered ~50 government projects with 100% satisfaction, accumulating nearly 1M migrated users from dozens of platforms.
+- Collaborated with Zimbra to identify and fix performance bugs impacting customers.
 
-I had the opportunity to work alongside great team members and we did awesome stuff together. Responsible for DevOps and Engineering Team I’ve accumulated functions since I had never let the technical side.
+### System Administrator — Oct 2010 – Mar 2013
 
-Look for new business and partnership opportunities, getting better contracts, maintain over 400k hosting users and dozens of dedicated clusters, understand company and customer problems to create appropriate roadmaps, prioritize tickets based on pain points of the support team, manage government projects and do some code was just a few of my duties. Below some of the things we’ve accomplished
+Led and executed the company's largest migration projects, building expertise in virtualization, storage, performance optimization, monitoring, and automation.
 
-- Coordinate datacenter migration moving 200TB and 150 production vms with 128 public IPs, 3k domains(only 80% managed by us) in less than 4 hours.
-- We’ve worked alongside Zimbra to help them fix several performance bugs impacting customers
-- Increase the customer satisfaction from 70% on avg. to 90%-98% over technical operations
-- Increased service availability from 95% in 2013 to 99.98-100% during 2014 and 2015
-- Migrated 100k users from dedicated environments and big customers to AWS avoiding data center infrastructure upfront investments in 2014 and 2015
-- Established AWS technology partnership and ingressed in the fast track program getting marketing, POC, and training budget from AWS.
-- Established AWS consulting partnership starting a new product pillar offering AWS managed services for customers
-- Earned the AWS Innovation Partner Award 2015 by helping customers migrate their data to AWS
-- Design, architecture, and development of a new customer/reseller portal from the ground up. It replaced the legacy portal with several ‘won’t fix bugs’ and integrated with all services offered by the company
-- Fully automated config files, security updates with Puppet
-- Log archive project with Logstash, Elasticsearch, Kibana, and Amazon S3 due to compliance laws.
-- Defined operational and Business KPIs using Datadog
-- Delivered ~50 government projects with 100% satisfaction and mostly on-time since 2013 accumulating almost 1 MM migrated users from dozens of different platforms
+- Migrated the email platform of OAB-SP (Lawyers Association of Brazil – SP): 100k users, 5TB of data.
+- Migrated the email platform of the University of Sao Paulo: 240k users, 12TB of data.
+- Migrated 25 university departments (25k users, 3TB) from diverse email platforms to a unified cluster in under 3 months.
+- Developed a transparent migration solution using Nginx, PHP, and Postfix, allowing two platforms to run in parallel during long migrations without user impact.
+- Automated SSH certificate distribution based on LDAP policies across 150 VMs, streamlining engineer onboarding and offboarding.
+- Delivered over 60 projects across private and government customers.
+- Served as a Zimbra official certification training instructor.
+- Migrated the SaaS product from bare metal to a fully virtualized environment.
 
-#### System Administrator - 2010/10 – 2013/03
+## Fiscaltech
 
-I’ve led and executed the biggest success cases of the company. For my commitment to every project, I got the opportunity to become a Manager later I’ve accumulated a whole set of different skills. Virtualization and storage technologies, performance-driven best practices, monitoring, development, and automation were things often seen during this period.
+### System Administrator — Oct 2008 – Oct 2010
 
-- Migration of the email platform of OAB-SP – Lawyers Association of Brazil – SP: 100K users and 5TB of mail data.
-- Automated many processes including distribution of SSH certificates based on LDAP policies in 150 virtual machines making easier onboarding and offboarding of engineers.
-- Migration of the email platform of the University of Sao Paulo, 240K users and 12TB of main data.
-- 25 University departments migrated to the cluster of the University of Sao Paulo in less than 3 months, a total of 25k users and 3TB and different email platform sources.
-- Developed a transparent migration solution for the University of Sao Paulo using Nginx, PHP, and Postfix. Two different platforms could run in parallel during a long migration period without impacts for the users.
-- Over 60 projects delivered between private and government customers.
-- Zimbra official certification training instructor.
-- Migration from bare metal to a 100% virtualized environment on the SAAS product.
+Deployed and maintained Linux services across ten+ offices, including file servers, proxies, email, web servers, VPN, and ITSM.
 
-### Fiscaltech
+# Education
 
-#### System Administrator – Fiscaltech 2008/10 – 2010/10
+Mackenzie Presbyterian University — Coursework in Electrical and Computing Engineering, 2016–2018
 
-Deployed and maintained Linux services running in over ten offices. File server, proxies, email, webservers, vpn connections and ITSM was some of the services I implemented.
+FATEC-SP — Coursework in Information Security, 2010–2011
 
-## Education
-
-Mackenzie Presbyterian University – M.Eng Electrical and Computing – 2016-2018 (dropped out)
-
-FATEC-SP – Advanced Diploma Security Information  2010-2011 (dropped out)
-
-Paulista University – Advanced Diploma Computer System Networking  2007-2009
+Paulista University — Advanced Diploma in Computer System Networking, 2007–2009
